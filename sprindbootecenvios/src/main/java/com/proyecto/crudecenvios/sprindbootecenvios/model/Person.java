@@ -2,18 +2,25 @@ package com.proyecto.crudecenvios.sprindbootecenvios.model;
 
 import jakarta.persistence.Entity;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "customer_record")
-public class Person {
+public class Person  implements Serializable{
+	
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	private int id;
+
+
+	@Column(columnDefinition = "Text")
 	private String firstName;
 	private String lastName;
 	private String documentType;
@@ -21,17 +28,43 @@ public class Person {
 	private String age;
 	private String mobilePhone;
 	private String addressEmail;
-	private String addresss;
+	private String address;
 	private String userName;
+	private String passwordUser;
+	private String confirmationPassword;
+	
+	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+	private List<Orders> orders;
+	
+	//constructor
+	
+	
+	
+	
+	
+		// TODO Auto-generated constructor stub
+	
 
-	@Column(columnDefinition = "Text")
-	private String Description;
-	private String orderNumber;
-	private Date orderDate;
-	private Date deliveryDate;
+
+
+	public List<Orders> getOrders() {
+		return orders;
+	}
+
+	public Person() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void setOrders(List<Orders> orders) {
+		this.orders = orders;
+	}
+
+	
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -78,10 +111,10 @@ public class Person {
 		this.addressEmail = addressEmail;
 	}
 	public String getAddresss() {
-		return addresss;
+		return address;
 	}
 	public void setAddresss(String addresss) {
-		this.addresss = addresss;
+		this.address = address;
 	}
 	public String getUserName() {
 		return userName;
@@ -89,29 +122,19 @@ public class Person {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getDescription() {
-		return Description;
+	public String getPasswordUser() {
+		return passwordUser;
 	}
-	public void setDescription(String description) {
-		Description = description;
+	public void setPasswordUser(String passwordUser) {
+		this.passwordUser = passwordUser;
 	}
-	public String getOrderNumber() {
-		return orderNumber;
+	public String getConfirmationPassword() {
+		return confirmationPassword;
 	}
-	public void setOrderNumber(String orderNumber) {
-		this.orderNumber = orderNumber;
+	public void setConfirmationPassword(String confirmationPassword) {
+		this.confirmationPassword = confirmationPassword;
 	}
-	public Date getOrderDate() {
-		return orderDate;
-	}
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
-	}
-	public Date getDeliveryDate() {
-		return deliveryDate;
-	}
-	public void setDeliveryDate(Date deliveryDate) {
-		this.deliveryDate = deliveryDate;
-	}
-
+	
+	
+	
 }

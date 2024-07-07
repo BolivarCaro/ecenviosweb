@@ -1,0 +1,28 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.model;
+
+import java.sql.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "user_orders")
+public class Orders {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long orderNumber;
+	private Date receiptDate;
+	private Date deliveryDate;
+	private String orderStatus;
+
+	@ManyToOne
+	@JoinColumn(name = "person_id", nullable = false)
+	private Person person;
+
+}

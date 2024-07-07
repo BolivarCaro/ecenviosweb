@@ -1,0 +1,21 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.proyecto.crudecenvios.sprindbootecenvios.dao.customerDAO;
+import com.proyecto.crudecenvios.sprindbootecenvios.model.Person;
+import com.proyecto.crudecenvios.sprindbootecenvios.service.ICustomerService;
+
+@Service
+public class CustomerServiceImpl implements ICustomerService {
+	
+	@Autowired
+	private customerDAO customerDao;
+	
+	
+	@Override
+	public Person findByUsername(String userName) {
+		return customerDao.findByUsername(userName);
+	}
+}

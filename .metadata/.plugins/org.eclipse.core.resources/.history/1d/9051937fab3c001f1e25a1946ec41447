@@ -1,0 +1,5 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.service;
+
+public interface ICustomerService {
+
+}

@@ -1,0 +1,11 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.service;
+
+import java.util.List;
+
+import com.proyecto.crudecenvios.sprindbootecenvios.model.Person;
+
+public interface customerRecord {
+	List<Person> GetPerson();
+	String DeleteCustomer(int id);
+	String Post
+}

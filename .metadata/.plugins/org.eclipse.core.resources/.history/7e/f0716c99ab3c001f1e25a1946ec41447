@@ -1,0 +1,11 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.proyecto.crudecenvios.sprindbootecenvios.model.Person;
+
+@Repository
+public interface customerDAO extends JpaRepository<Person, Integer>{
+	public Person findByUsername(String userName);
+}

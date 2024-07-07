@@ -1,0 +1,5 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.dao;
+
+public interface customerDAO {
+
+}

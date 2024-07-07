@@ -1,0 +1,7 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.service;
+
+import com.proyecto.crudecenvios.sprindbootecenvios.model.Person;
+
+public interface ICustomerService {
+	public Person findByUsername(String userName);
+}
