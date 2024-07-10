@@ -1,0 +1,8 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.services;
+
+import com.proyecto.crudecenvios.sprindbootecenvios.dto.CustomerRecordDTO;
+import com.proyecto.crudecenvios.sprindbootecenvios.model.Person;
+
+public interface CustomerService {
+	public Person save(CustomerRecordDTO recordDTO);
+}

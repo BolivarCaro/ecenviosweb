@@ -1,0 +1,6 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.services;
+
+
+public interface CustomerService {
+	public Person save(CustomerRecordDTO recordDTO);
+}

@@ -1,0 +1,5 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.repositorio;
+
+public interface CustomerRepository {
+
+}

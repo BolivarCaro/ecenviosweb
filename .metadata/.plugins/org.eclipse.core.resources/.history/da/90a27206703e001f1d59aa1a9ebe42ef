@@ -1,0 +1,54 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.security;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+
+import com.proyecto.crudecenvios.sprindbootecenvios.services.CustomerService;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfiguration {
+
+	@Autowired
+	private CustomerService customerService;
+
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		// Protección CSRF (recomendada):
+		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()); // Opcional: Configure el
+																						// almacenamiento de tokens
+
+		// Autorización:
+		http.authorizeRequests().antMatchers("/record**").permitAll() // Permite el acceso a rutas relacionadas con
+																		// registros
+				.antMatchers("/js/**", "/css/**", "/img/**").permitAll() // Permite el acceso a recursos estáticos
+				.anyRequest().authenticated(); // Requiere autenticación para otras solicitudes
+
+		// Inicio de sesión de formulario:
+		http.formLogin().loginPage("/login").permitAll() // Permite el acceso a la página de inicio de sesión
+				.defaultSuccessUrl("/home", true); // Redirige a "/home" después de un inicio de sesión exitoso
+
+		// Cierre de sesión:
+		http.logout().logoutUrl("/logout") // URL para cerrar sesión
+				.logoutSuccessUrl("/login?logout") // Redirige a la página de inicio de sesión con el parámetro "logout"
+				.and().exceptionHandling().accessDeniedPage("/access-denied"); // Página para intentos de acceso no
+																				// autorizado
+
+		return http.build();
+	}
+
+}

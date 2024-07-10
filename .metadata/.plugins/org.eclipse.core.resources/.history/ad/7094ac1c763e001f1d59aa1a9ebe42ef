@@ -1,0 +1,11 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.repositorio;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.proyecto.crudecenvios.sprindbootecenvios.model.Person;
+
+@Repository
+public interface CustomerRepository extends JpaRepository<Person, Long>{
+	
+}

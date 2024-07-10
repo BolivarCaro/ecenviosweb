@@ -1,0 +1,42 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.services;
+
+import java.util.Arrays;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.proyecto.crudecenvios.sprindbootecenvios.dto.CustomerRecordDTO;
+import com.proyecto.crudecenvios.sprindbootecenvios.model.OrdersUsers;
+import com.proyecto.crudecenvios.sprindbootecenvios.model.Person;
+import com.proyecto.crudecenvios.sprindbootecenvios.repositorio.CustomerRepository;
+
+@Service
+public class CustomerServiceImpl implements CustomerService {
+
+	private CustomerRepository customerRepository;
+
+	public CustomerServiceImpl(CustomerRepository customerRepository) {
+		super();
+		this.customerRepository = customerRepository;
+	}
+
+	@Override
+	public Person save(CustomerRecordDTO recordDTO) {
+		Person person = new Person(recordDTO.getFirstName(), recordDTO.getLastName(), recordDTO.getDocumentType(), 
+				recordDTO.getDocument(), recordDTO.getAge(), recordDTO.getMobilePhone(), recordDTO.getAddressEmail(),
+				recordDTO.getAddress(), recordDTO.getUserName(), recordDTO.getPasswordUser(), recordDTO.getConfirmationPassword(), 
+				recordDTO.getOrders());
+		return customerRepository.save(person);
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+	
+}

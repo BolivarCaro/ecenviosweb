@@ -3,3 +3,19 @@
 1720389285691	Delete element
 1720389304924	Delete element
 1720389318291	Delete element
+1720400544832	Rename type 'Orders'
+1720458855079	Rename resource 'registro.html'
+1720586859740	Delete element
+1720629670935	Delete element
+1720630868709	Rename resource 'index.html'
+1720631466633	Copy compilation unit
+1720631604520	Delete element
+1720631640201	Copy compilation unit
+1720631706135	Delete element
+1720632524756	Rename package 'com.proyecto.crudecenvios.sprindbootecenvios'
+1720632570943	Rename package 'com.proyecto.crudecenvios.sprindbootecenvios.security'
+1720632826635	Rename package 'com.proyecto.crudecenvios.sprindbootecenvios.services'
+1720632859966	Rename package 'com.proyecto.crudecenvios.sprindbootecenvios.repositorio'
+1720632879036	Rename package 'com.proyecto.crudecenvios.sprindbootecenvios.dto'
+1720632895824	Rename package 'com.proyecto.crudecenvios.sprindbootecenvios.model'
+1720632911618	Rename package 'com.proyecto.crudecenvios.sprindbootecenvios.controllers'

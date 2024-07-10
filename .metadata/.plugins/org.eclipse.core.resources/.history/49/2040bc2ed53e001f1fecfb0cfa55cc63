@@ -1,0 +1,5 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.security;
+
+public class securityConfig {
+
+}

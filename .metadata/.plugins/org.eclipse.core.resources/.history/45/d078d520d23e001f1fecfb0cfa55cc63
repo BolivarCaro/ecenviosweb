@@ -1,0 +1,13 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.services;
+
+
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+import com.proyecto.crudecenvios.sprindbootecenvios.dto.CustomerRecordDTO;
+import com.proyecto.crudecenvios.sprindbootecenvios.model.Person;
+
+public interface CustomerService extends UserDetailsService{
+	public Person save(CustomerRecordDTO recordDTO);
+
+	
+}

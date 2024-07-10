@@ -1,0 +1,21 @@
+package com.proyecto.crudecenvios.sprindbootecenvios.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class recordController {
+	
+	@Autowired
+	private CustomerSevice service;
+	
+	@GetMapping("/login")
+	public String iniciarSesion() {
+		return "login";
+	}
+	@GetMapping("/")
+	public String verPaginaDeInicio(Model modelo) {
+		modelo.addAttribute("person", servicio.listarUsuarios());
+		return "index";
+}
