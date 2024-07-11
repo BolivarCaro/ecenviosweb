@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import com.proyecto.crudecenvios.springbootecenvios.dto.CustomerRecordDTO;
 import com.proyecto.crudecenvios.springbootecenvios.model.Person;
 
-public interface CustomerService extends UserDetailsService{
+public interface CustomerService{
 	public Person save(CustomerRecordDTO recordDTO);
 	
 	

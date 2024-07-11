@@ -16,43 +16,22 @@ import com.proyecto.crudecenvios.springbootecenvios.services.CustomerService;
 @Configuration
 @EnableWebSecurity
 public class securityConfig {
-	
-	private final UserDetailsService customerService;
-	
-	public securityConfig(CustomerService customerService) {
-		this.customerService = (UserDetailsService) customerService;
-	}
+
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	 @Bean
-	    public DaoAuthenticationProvider authenticationProvider() {
-	        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-	        auth.setUserDetailsService(customerService);
-	        auth.setPasswordEncoder(passwordEncoder());
-	        return auth;
-	    }
 
-	    @Bean
-	    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-	        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
-	        http.authorizeRequests()
-	            .requestMatchers("/registro**", "/js/**", "/css/**", "/img/**").permitAll()
-	            .anyRequest().authenticated()
-	            .and()
-	            .formLogin()
-	                .loginPage("/login")
-	                .permitAll()
-	            .and()
-	            .logout()
-	                .invalidateHttpSession(true)
-	                .clearAuthentication(true)
-	                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-	                .logoutSuccessUrl("/login?logout")
-	                .permitAll();
+		http.authorizeRequests().requestMatchers("/registro**", "/js/**", "/css/**", "/img/**").permitAll().anyRequest()
+				.authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
+				.invalidateHttpSession(true).clearAuthentication(true)
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout")
+				.permitAll();
 
-	        return http.build();
-	    }
+		return http.build();
+	}
 }
