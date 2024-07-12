@@ -11,10 +11,10 @@ import com.proyecto.crudecenvios.springbootecenvios.services.CustomerService;
 @Controller
 public class recordController {
 	
-	private final CustomerService customerService;
+	private  CustomerService customerService;
 
     @Autowired
-    public recordController(CustomerService customerService) {
+    public void setCustomerService(CustomerService customerService) {
         this.customerService = customerService;
     }
 

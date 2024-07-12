@@ -1,5 +1,6 @@
 package com.proyecto.crudecenvios.springbootecenvios.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -16,6 +17,8 @@ import com.proyecto.crudecenvios.springbootecenvios.services.CustomerService;
 @Configuration
 @EnableWebSecurity
 public class securityConfig {
+	
+	
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -26,7 +29,7 @@ public class securityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
-		http.authorizeRequests().requestMatchers("/registro**", "/js/**", "/css/**", "/img/**").permitAll().anyRequest()
+		http.authorizeRequests().requestMatchers("/record**", "/js/**", "/css/**", "/img/**").permitAll().anyRequest()
 				.authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
 				.invalidateHttpSession(true).clearAuthentication(true)
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout")
@@ -34,4 +37,14 @@ public class securityConfig {
 
 		return http.build();
 	}
+	
+	@Bean
+    public DaoAuthenticationProvider authenticationProvider(CustomerService customerService) {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService((UserDetailsService) customerService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
+	 
+	
 }

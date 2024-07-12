@@ -1,0 +1,8 @@
+spring.application.name=sprindbootecenvios
+spring.datasource.driver-classs-name=com.mysql.cj.jdbc.Driver;
+spring.datasource.url=jdbc:mysql://localhost:3306/customer_Dao
+spring.datasource.username=root
+spring.datasource.password=
+
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update

@@ -17,7 +17,6 @@
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
     <fullyQualifiedTypeName name="com.proyecto.crudecenvios.sprindbootecenvios.services.CustomerService"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetails"/>
-    <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetailsService"/>
     <fullyQualifiedTypeName name="com.proyecto.crudecenvios.sprindbootecenvios.model.Person"/>
     <fullyQualifiedTypeName name="com.proyecto.crudecenvios.sprindbootecenvios.model.OrdersUsers"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
@@ -29,4 +28,5 @@
     <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <fullyQualifiedTypeName name="com.proyecto.crudecenvios.sprindbootecenvios.repositorio.CustomerRepository"/>
     <fullyQualifiedTypeName name="com.proyecto.crudecenvios.sprindbootecenvios.controllers.dto.CustomerRecordDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetailsService"/>
 </qualifiedTypeNameHistroy>

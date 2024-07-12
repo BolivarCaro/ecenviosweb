@@ -18,14 +18,17 @@ public class Person {
 	private String document;
 	private String age;
 	private String mobilePhone;
+	
+	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 	private String address;
 	private String userName;
+	
+	@Column(name = "password", nullable = false)
 	private String passwordUser;
 	private String confirmationPassword;
 
-	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-	private Collection<OrdersUsers> orders;
+	
 
 	public Person() {
 		super();
@@ -38,7 +41,7 @@ public class Person {
 
 	public Person(String firstName, String lastName, String documentType, String document, String age,
 			String mobilePhone, String email, String address, String userName, String passwordUser,
-			String confirmationPassword, Collection<OrdersUsers> orders) {
+			String confirmationPassword) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -51,7 +54,7 @@ public class Person {
 		this.userName = userName;
 		this.passwordUser = passwordUser;
 		this.confirmationPassword = confirmationPassword;
-		this.orders = orders;
+		
 	}
 
 
@@ -160,13 +163,7 @@ public class Person {
 		this.confirmationPassword = confirmationPassword;
 	}
 
-	public Collection<OrdersUsers> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(Collection<OrdersUsers> orders) {
-		this.orders = orders;
-	}
+	
 
 	
 }
