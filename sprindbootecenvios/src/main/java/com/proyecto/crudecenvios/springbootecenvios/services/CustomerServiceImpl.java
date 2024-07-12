@@ -1,5 +1,6 @@
 package com.proyecto.crudecenvios.springbootecenvios.services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -57,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService, UserDetailsService{
         if (person == null) {
             throw new UsernameNotFoundException("Usuario no encontrado con el email: " + username);
         }
-        return new User(person.getEmail(), person.getPasswordUser(), null);
+        return new User(person.getEmail(), person.getPasswordUser(), new ArrayList<>());
     }
 
 	/*
