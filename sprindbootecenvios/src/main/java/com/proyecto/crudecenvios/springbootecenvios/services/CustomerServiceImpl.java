@@ -1,14 +1,12 @@
 package com.proyecto.crudecenvios.springbootecenvios.services;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,49 +15,47 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.proyecto.crudecenvios.springbootecenvios.dto.CustomerRecordDTO;
-import com.proyecto.crudecenvios.springbootecenvios.model.OrdersUsers;
+
 import com.proyecto.crudecenvios.springbootecenvios.model.Person;
 import com.proyecto.crudecenvios.springbootecenvios.repositorio.CustomerRepository;
 
 @Service
-public class CustomerServiceImpl implements CustomerService, UserDetailsService{
-	
+public class CustomerServiceImpl implements CustomerService, UserDetailsService {
+
 	@Autowired
 	private final BCryptPasswordEncoder passwordEncoder;
 
 	private final CustomerRepository customerRepository;
 
-	public CustomerServiceImpl(CustomerRepository customerRepository,  BCryptPasswordEncoder passwordEncoder) {
+	public CustomerServiceImpl(CustomerRepository customerRepository, BCryptPasswordEncoder passwordEncoder) {
 		this.customerRepository = customerRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
 
 	@Override
 	public Person save(CustomerRecordDTO recordDTO) {
-		
+
 		String rawPassword = recordDTO.getPasswordUser();
 		if (recordDTO.getPasswordUser() == null || recordDTO.getPasswordUser().isEmpty()) {
-	        throw new IllegalArgumentException("La contraseña no puede ser nula o vacía");
-	    }
-	    
-	    // Codificar la contraseña solo si no es nula ni vacía
-	    String encodedPassword = passwordEncoder.encode(rawPassword);
+			throw new IllegalArgumentException("La contraseña no puede ser nula o vacía");
+		}
 
-		
-		Person person = new Person(recordDTO.getFirstName(), recordDTO.getLastName(), recordDTO.getDocumentType(), 
+		// Codificar la contraseña solo si no es nula ni vacía
+		String encodedPassword = passwordEncoder.encode(rawPassword);
+
+		Person person = new Person(recordDTO.getFirstName(), recordDTO.getLastName(), recordDTO.getDocumentType(),
 				recordDTO.getDocument(), recordDTO.getAge(), recordDTO.getMobilePhone(), recordDTO.getEmail(),
-				recordDTO.getAddress(), recordDTO.getUserName(), encodedPassword,  recordDTO.getConfirmationPassword());
+				recordDTO.getAddress(), recordDTO.getUserName(), encodedPassword, recordDTO.getConfirmationPassword());
 		return customerRepository.save(person);
 	}
-	
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Person person = customerRepository.findByEmail(username);
-        if (person == null) {
-            throw new UsernameNotFoundException("Usuario no encontrado con el email: " + username);
-        }
-        return new User(person.getEmail(), person.getPasswordUser(), new ArrayList<>());
-    }
+		if (person == null) {
+			throw new UsernameNotFoundException("Usuario no encontrado con el email: " + username);
+		}
+		return new User(person.getEmail(), person.getPasswordUser(), new ArrayList<>());
+	}
 
 	/*
 	 * private Collection<? extends GrantedAuthority>
@@ -74,5 +70,39 @@ public class CustomerServiceImpl implements CustomerService, UserDetailsService{
 		// TODO Auto-generated method stub
 		return customerRepository.findAll();
 	}
-}
 
+	@Override
+	public Person getPersonById(int id) {
+		return customerRepository.findById(id).orElseThrow(() -> new RuntimeException("Customer not found"));
+	}
+
+	@Override
+	public void updatePerson(int id, Person customer) {
+		Person existingPerson = customerRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Customer not found"));
+		existingPerson.setFirstName(customer.getFirstName());
+		existingPerson.setLastName(customer.getLastName());
+		existingPerson.setDocumentType(customer.getDocumentType());
+		existingPerson.setDocument(customer.getDocument());
+		existingPerson.setAge(customer.getAge());
+		existingPerson.setMobilePhone(customer.getMobilePhone());
+		existingPerson.setEmail(customer.getEmail());
+		existingPerson.setAddress(customer.getAddress());
+		existingPerson.setUserName(customer.getUserName());
+		existingPerson.setPasswordUser(customer.getPasswordUser());
+		customerRepository.save(existingPerson);
+	}
+
+	
+
+	@Override
+    public void deletePersonById(int id) {
+        customerRepository.deleteById(id);
+    }
+
+    @Override
+    public Person findById(int id) {
+        return customerRepository.findById(id).orElseThrow(() -> new RuntimeException("Person not found"));
+    }
+
+}

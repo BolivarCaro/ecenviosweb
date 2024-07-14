@@ -1,0 +1,52 @@
+package com.proyecto.crudecenvios.springbootecenvios.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.proyecto.crudecenvios.springbootecenvios.dto.CustomerRecordDTO;
+import com.proyecto.crudecenvios.springbootecenvios.model.Person;
+import com.proyecto.crudecenvios.springbootecenvios.services.CustomerService;
+
+@Controller
+@RequestMapping("/record")
+public class recordCustomerController {
+
+	private CustomerService customerService;
+
+	public recordCustomerController(CustomerService customerService) {
+		super();
+		this.customerService = customerService;
+	}
+
+	@ModelAttribute("customer")
+	public CustomerRecordDTO returnNewCustomerRecordDTO() {
+		return new CustomerRecordDTO();
+	}
+
+	@GetMapping
+	public String displayRegistrationForm(Model model) {
+		CustomerRecordDTO customer = new CustomerRecordDTO(); // Crear una instancia de CustomerRecordDTO
+		model.addAttribute("customer", customer); // Agregar customer al modelo con el nombre "customer"
+		return "record"; // Nombre de tu vista Thymeleaf (record.html)
+	}
+
+	@PostMapping
+	public String RegisterUserAccount(@ModelAttribute("customer") CustomerRecordDTO recordDTO) {
+
+		if (recordDTO.getPasswordUser() == null || recordDTO.getPasswordUser().isEmpty()) {
+			return "redirect:/record?error=passwordRequired";
+		}
+		customerService.save(recordDTO);
+		return "redirect:/record?exito";
+
+	}
+
+}

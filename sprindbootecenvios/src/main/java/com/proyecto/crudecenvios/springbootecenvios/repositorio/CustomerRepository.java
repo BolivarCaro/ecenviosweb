@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.proyecto.crudecenvios.springbootecenvios.model.Person;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Person, Long>{
+public interface CustomerRepository extends JpaRepository<Person, Integer>{
 	public Person findByEmail(String email);
 }

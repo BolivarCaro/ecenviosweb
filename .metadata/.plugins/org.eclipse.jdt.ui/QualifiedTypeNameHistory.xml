@@ -22,11 +22,19 @@
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Collection"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <fullyQualifiedTypeName name="com.proyecto.crudecenvios.sprindbootecenvios.repositorio.CustomerRepository"/>
     <fullyQualifiedTypeName name="com.proyecto.crudecenvios.sprindbootecenvios.controllers.dto.CustomerRecordDTO"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetailsService"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestAttribute"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="com.proyecto.crudecenvios.springbootecenvios.model.Person"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+    <fullyQualifiedTypeName name="com.proyecto.crudecenvios.springbootecenvios.services.CustomerService"/>
+    <fullyQualifiedTypeName name="com.proyecto.crudecenvios.springbootecenvios.controllers.recordController"/>
+    <fullyQualifiedTypeName name="com.proyecto.crudecenvios.springbootecenvios.dto.CustomerRecordDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
 </qualifiedTypeNameHistroy>

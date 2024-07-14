@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ec-envios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<title>User Registration</title>
+  </head>
+  <body>
+	<nav class="navbar" style="background-color: #001F3F;">
+	    <div class="container text-center">
+	        <a class="navbar-brand" href="#" th:href="@{/}" style="color: white; font-weight: bold; font-size: 20px;">
+	            Registro
+	        </a>
+	    </div>
+	</nav>
+	
+
+
+
+		<br>
+		<br>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div th:if=${param.exito}>
+						<div class="alert alert-info">registro exitoso </div>
+					</div>
+
+					<h1 style="text-align: center; font-size: 36px; color: #001F3F; font-weight: bold; margin-top: 20px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">
+					    Regístrate
+					</h1>
+
+					<div class="container">
+						<form th:action="@{/record}" method="post" th:object="${customer}">
+							<div class="form-group">
+								<label class="control-label" for="firstName">Name : </label> <input
+									id="firstName" type="text" class="form-control" th:field="*{firstName}"
+									required autofocus="autofocus">
+							</div>
+
+							<div class="form-group">
+								<label class="control-label" for="lastName">Last Name : </label> <input
+									id="lastName" class="form-control" th:field="*{lastName}"
+									required autofocus="autofocus">
+							</div>
+
+							<div class="form-group">
+								<label class="control-label" for="documentType">Document Type : </label> 
+								<input id="documentType" type="text" class="form-control" th:field="*{documentType}"
+									required autofocus="autofocus">
+							</div>
+							<div class="form-group">
+								<label class="control-label" for="document">Document</label>
+								<input id="document" type="text" class="form-control" th:field="*{document}"
+									requiered autofocus="autofocus">
+							<div class="form-group">
+								<label class="control-label" for="age">Age</label>
+								<input id="age" type="text" class="form-control" th:field="*{age}"
+								 required autofocus="autofocus">
+							</div>
+							<div class="form-group">
+								<lavel class="control-label" for="mobilePhone">Mobile Phone</label>
+								<input id="mobilePhone" type="text" class="form-control" th:field="*{mobilePhone}"
+									required autofocus="autofocus">
+								
+							</div>
+							<div class="form-group">
+								<lavel class="control-label" for="email">Address Email</label>
+								<input id="email" type="text" class="form-control" th:field="*{email}"
+									required autofocus="autofocus">
+							</div>
+							<div class="form-group">
+								<label class="control-label" for="address">Address</label>
+								<input id="address" type="text" class="form-control" th:field="*{address}"
+									required autofocus="autofocus">
+							</div>
+							<div class="form-group">
+								<label class="control-label" for="userName">Username</label>
+								<input id="userName" type="text" class="form-control" th:field="*{userName}"
+									required autofocus="autofocus">
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label" for="passwordUser">Password : </label> 
+								<input type="password" id="passwordUser" class="form-control" th:field="*{passwordUser}"
+									required autofocus="autofocus">
+							</div>
+							<div class="form-group">
+								<label class="control-label" for="confirmationPassword">Password : </label> 
+								<input type="password" id="confirmationPassword" class="form-control" th:field="*{confirmationPassword}"
+									required autofocus="autofocus">
+							</div>
+
+							<div class="form-group" style="text-align: center; margin-top: 40px; margin-bottom: 60px;">
+							    <button type="submit" class="btn btn-success" style="padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 5px;">
+							        Registrar
+							    </button>
+							    <div style="margin-top: 20px; color: #555;">
+							        <span>Si ya estás registrado, <a th:href="@{/login}" style="color: #001F3F; text-decoration: underline; font-weight: bold;">inicia sesión aquí</a></span>
+							    </div>
+							</div>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+    
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+		
+  </body>
+</html>

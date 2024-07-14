@@ -29,7 +29,7 @@ public class securityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
-		http.authorizeRequests().requestMatchers("/record**", "/js/**", "/css/**", "/img/**").permitAll().anyRequest()
+		http.authorizeRequests().requestMatchers("/record**", "/edit/**","/delete/**",  "/js/**", "/css/**", "/images/**").permitAll().anyRequest()
 				.authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
 				.invalidateHttpSession(true).clearAuthentication(true)
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout")

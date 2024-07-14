@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Editar Cliente</title>
+    <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                
+            </div>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>Editar Cliente</h1>
+				 <form th:action="@{/record/edit/{id}(id=${customerRecordDTO.id})}" method="post" th:object="${customerRecordDTO}">
+
+                    <div class="form-group">
+                        <label for="firstName">Nombre:</label>
+                        <input type="text" id="firstName" th:field="*{firstName}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Apellido:</label>
+                        <input type="text" id="lastName" th:field="*{lastName}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="documentType">Tipo de Documento:</label>
+                        <input type="text" id="documentType" th:field="*{documentType}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="document">Documento:</label>
+                        <input type="text" id="document" th:field="*{document}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Edad:</label>
+                        <input type="text" id="age" th:field="*{age}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="mobilePhone">Teléfono Móvil:</label>
+                        <input type="text" id="mobilePhone" th:field="*{mobilePhone}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="text" id="email" th:field="*{email}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Dirección:</label>
+                        <input type="text" id="address" th:field="*{address}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">Nombre de Usuario:</label>
+                        <input type="text" id="userName" th:field="*{userName}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordUser">Contraseña:</label>
+                        <input type="password" id="passwordUser" th:field="*{passwordUser}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmationPassword">Confirmar Contraseña:</label>
+                        <input type="password" id="confirmationPassword" th:field="*{confirmationPassword}" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -17,5 +17,12 @@ public interface CustomerService {
 	public List<Person> listarPerson();
 
 
-	
+	Person getPersonById(int id);
+    void updatePerson(int id, Person person);
+    void deletePersonById(int id);
+
+
+    public Person findById(int id);
+
+
 }

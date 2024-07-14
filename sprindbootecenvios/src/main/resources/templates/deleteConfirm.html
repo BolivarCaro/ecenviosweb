@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Eliminar Registro</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #dc3545; /* Color rojo para destacar */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            background-color: #dc3545; /* Botón rojo */
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #c82333; /* Color más oscuro al pasar el mouse */
+        }
+        a {
+            margin-left: 20px;
+            font-size: 16px;
+            color: #007bff; /* Color del enlace */
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Está seguro de que desea eliminar a esta persona?</h1>
+        <form th:action="@{/record/delete/{id}(id=${person.id})}" method="post">
+            <button type="submit">Sí, Eliminar</button>
+            <a th:href="@{/index}">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

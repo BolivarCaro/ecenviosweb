@@ -1,0 +1,25 @@
+package com.proyecto.crudecenvios.springbootecenvios.services;
+
+
+
+
+import java.util.List;
+
+
+
+import com.proyecto.crudecenvios.springbootecenvios.dto.CustomerRecordDTO;
+import com.proyecto.crudecenvios.springbootecenvios.model.Person;
+
+public interface CustomerService {
+	public Person save(CustomerRecordDTO recordDTO);
+	
+	
+	public List<Person> listarPerson();
+
+
+	Person getPersonById(Long id);
+    void updatePerson(Long id, Person person);
+    void deletePersonById(Long id);
+
+
+}
